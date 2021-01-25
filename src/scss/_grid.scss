@@ -1,0 +1,229 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: $grid-gutter / 2;
+  padding-left: $grid-gutter / 2;
+
+  @include breakpoint-min($sm) {
+    max-width: $container-sm;
+  }
+
+  @include breakpoint-min($md) {
+    max-width: $container-md;
+  }
+
+  @include breakpoint-min($lg) {
+    max-width: $container-lg;
+  }
+
+  @include breakpoint-min($xl) {
+    max-width: $container-xl;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: $grid-gutter / 2;
+  padding-left: $grid-gutter / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: -$grid-gutter / 2;
+  margin-left: -$grid-gutter / 2;
+
+  &.row-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  & > .col,
+  & > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@mixin col {
+  position: relative;
+  width: 100%;
+  padding-left: $grid-gutter / 2;
+  padding-right: $grid-gutter / 2;
+}
+
+.col {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  padding-left: $grid-gutter / 2;
+  padding-right: $grid-gutter / 2;
+
+  &.col-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@for $i from 1 through $col-count {
+  .col-#{$i} {
+    @include col;
+    flex: 0 0 ($i / $col-count) * 100%;
+    max-width: ($i / $col-count) * 100%;
+  }
+}
+
+@for $i from 1 through $col-count {
+  .offset-#{$i} {
+    margin-left: ($i / $col-count) * 100%;
+  }
+}
+
+@for $i from 1 through $col-count {
+  .col-xs-#{$i} {
+    @include col;
+    flex: 0 0 ($i / $col-count) * 100%;
+    max-width: ($i / $col-count) * 100%;
+  }
+}
+
+@for $i from 1 through $col-count {
+  .offset-xs-#{$i} {
+    margin-left: ($i / $col-count) * 100%;
+  }
+}
+
+@for $i from 1 through $col-count {
+  .col-sm-#{$i} {
+    @include col;
+    @include breakpoint-min($sm) {
+      flex: 0 0 ($i / $col-count) * 100%;
+      max-width: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@include breakpoint-min($sm) {
+  @for $i from 1 through $col-count {
+    .offset-sm-#{$i} {
+      margin-left: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@for $i from 1 through $col-count {
+  .col-md-#{$i} {
+    @include col;
+    @include breakpoint-min($md) {
+      flex: 0 0 ($i / $col-count) * 100%;
+      max-width: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@include breakpoint-min($md) {
+  @for $i from 1 through $col-count {
+    .offset-md-#{$i} {
+      margin-left: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@for $i from 1 through $col-count {
+  .col-lg-#{$i} {
+    @include col;
+    @include breakpoint-min($lg) {
+      flex: 0 0 ($i / $col-count) * 100%;
+      max-width: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@include breakpoint-min($lg) {
+  @for $i from 1 through $col-count {
+    .offset-lg-#{$i} {
+      margin-left: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@for $i from 1 through $col-count {
+  .col-xl-#{$i} {
+    @include col;
+    @include breakpoint-min($xl) {
+      flex: 0 0 ($i / $col-count) * 100%;
+      max-width: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+@include breakpoint-min($xl) {
+  @for $i from 1 through $col-count {
+    .offset-xl-#{$i} {
+      margin-left: ($i / $col-count) * 100%;
+    }
+  }
+}
+
+// add this class to body to see the grid
+.grid::before {
+  width: calc(100% + #{$grid-gutter});
+  transform: translateX(-50%);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  content: '';
+  pointer-events: none;
+  z-index: 10000;
+
+  $grid-color: rgba(255, 0, 0, 0.1);
+  $grid-column-width: calc(
+    (100% - #{$grid-gutter} * #{$col-count}) / #{$col-count}
+  );
+
+  border: solid transparent;
+  border-width: 0 calc(
+    #{$grid-gutter} - #{$grid-gutter} / 2
+  );
+
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(#{$grid-gutter} / 2),
+    #{$grid-color} calc(#{$grid-gutter} / 2),
+    #{$grid-color} calc(#{$grid-column-width} + #{$grid-gutter} / 2),
+    transparent calc(#{$grid-column-width} + #{$grid-gutter} / 2),
+    transparent calc(#{$grid-column-width} + #{$grid-gutter})
+  );
+
+  @include breakpoint-min($sm) {
+    width: calc(#{$container-sm} + #{$grid-gutter});
+  }
+  @include breakpoint-min($md) {
+    width: calc(#{$container-md} + #{$grid-gutter});
+  }
+  @include breakpoint-min($lg) {
+    width: calc(#{$container-lg} + #{$grid-gutter});
+  }
+  @include breakpoint-min($xl) {
+    width: calc(#{$container-xl} + #{$grid-gutter});
+  }
+}
