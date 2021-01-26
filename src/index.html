@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple grid</title>
-    <link rel="stylesheet" href="./css/style.min.css" />
+    <link rel="stylesheet" href="./css/grid.min.css" />
     <style>
       [class^="col"] {
         padding-top: 5px;
@@ -19,7 +19,8 @@
         bottom: 0;
         left: 15px;
         width: calc(100% - 30px);
-        border: 1px solid gray;
+        border: 2px solid gray;
+        border-radius: 4px;
       }
       .container:not(:last-child) {
         margin-bottom: 30px;
@@ -28,6 +29,7 @@
   </head>
   <body class="grid">
     <div class="container">
+      <h2>Constant width</h2>
       <div class="row">
         <div class="col">.col</div>
       </div>
@@ -43,6 +45,22 @@
     </div>
 
     <div class="container">
+      <h2>Extra large (xl)</h2>
+      <div class="row">
+        <div class="col-xl-12">.col-xl-12</div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6">.col-xl-6</div>
+        <div class="col-xl-6">.col-xl-6</div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4">.col-xl-4</div>
+        <div class="col-xl-8">.col-xl-8</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Large (lg)</h2>
       <div class="row">
         <div class="col-lg-12">.col-lg-12</div>
       </div>
@@ -50,18 +68,85 @@
         <div class="col-lg-6">.col-lg-6</div>
         <div class="col-lg-6">.col-lg-6</div>
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-lg-4">.col-lg-4</div>
         <div class="col-lg-8">.col-lg-8</div>
       </div>
+    </div>
+
+    <div class="container">
+      <h2>Medium (md)</h2>
       <div class="row">
-        <div class="col-lg-6">.col-lg-6</div>
-        <div class="col-lg-6">.col-lg-6</div>
+        <div class="col-md-12">.col-md-12</div>
       </div>
       <div class="row">
-        <div class="col-lg-7">.col-lg-7</div>
-        <div class="col-lg-5">.col-lg-5</div>
-      </div> -->
+        <div class="col-md-6">.col-md-6</div>
+        <div class="col-md-6">.col-md-6</div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-8">.col-md-8</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Small (sm)</h2>
+      <div class="row">
+        <div class="col-sm-12">.col-sm-12</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">.col-sm-6</div>
+        <div class="col-sm-6">.col-sm-6</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">.col-sm-4</div>
+        <div class="col-sm-8">.col-sm-8</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Extra small (xs)</h2>
+      <div class="row">
+        <div class="col-xs-12">.col-xs-12</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">.col-xs-6</div>
+        <div class="col-xs-6">.col-xs-6</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">.col-xs-4</div>
+        <div class="col-xs-8">.col-xs-8</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Mix</h2>
+      <div class="row">
+        <div class="col-lg-12 col-md-6">.col-lg-12 .col-md-6</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-3">.col-lg-6 .col-md-3</div>
+        <div class="col-lg-6 col-md-9">.col-lg-6 .col-md-9</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-8">.col-lg-4 .col-md-8</div>
+        <div class="col-lg-8 col-md-4">.col-lg-8 .col-md-4</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Offset</h2>
+      <div class="row">
+        <div class="col-8 offset-2">.offset-2 .col-8</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">.offset-lg-2 .col-lg-8</div>
+        <div class="col-6 offset-lg-6 offset-md-2">.offset-lg-6 .offset-md-2 .col-6</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 offset-md-2">.col-lg-4 .offset-md-2</div>
+        <div class="col-lg-8 offset-md-4">.col-lg-8 .offset-md-4</div>
+      </div>
     </div>
   </body>
 </html>

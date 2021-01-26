@@ -214,6 +214,9 @@ html {
     transparent calc(#{$grid-column-width} + #{$grid-gutter})
   );
 
+  @include breakpoint-min($xs) {
+    width: 0;
+  }
   @include breakpoint-min($sm) {
     width: calc(#{$container-sm} + #{$grid-gutter});
   }

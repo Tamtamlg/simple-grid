@@ -23,7 +23,7 @@ let postCssPlugins = [autoprefixer()];
 
 gulp.task("style", function () {
   return gulp
-    .src(dirs.source + "/scss/style.scss")
+    .src(dirs.source + "/scss/grid.scss")
     .pipe(
       plumber({
         errorHandler: function (err) {
@@ -42,7 +42,7 @@ gulp.task("style", function () {
     .pipe(sourcemaps.write("/"))
     .pipe(gulp.dest(dirs.build + "/css/"))
     .pipe(browserSync.stream({ match: "**/*.css" }))
-    .pipe(rename("style.min.css"))
+    .pipe(rename("grid.min.css"))
     .pipe(cleanCSS())
     .pipe(gulp.dest(dirs.build + "/css/"));
 });
@@ -72,13 +72,12 @@ gulp.task(
 
     gulp.watch(
       [
-        dirs.source + "/scss/style.scss",
-        dirs.source + "/scss/variables.scss",
-        dirs.source + "/scss/fonts.scss",
-        dirs.source + "/scss/base.scss",
-        dirs.source + "/blocks/**/*.scss",
+        dirs.source + "/scss/grid.scss",
+        dirs.source + "/scss/_variables.scss",
+        dirs.source + "/scss/_grid.scss",
+        dirs.source + "/scss/_mixins.scss",
       ],
-      gulp.series("style")
+      gulp.series("style", reload)
     );
 
     gulp.watch([dirs.source + "/**/*.html"], gulp.series("html", reload));
