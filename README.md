@@ -32,15 +32,10 @@ $xl: 1200px !default;
 
 ## How to use
 
-### 1 Add link to head
-```html
-<link rel="stylesheet" href="./dist/css/grid.min.css">
-```
-
-### 2 Or include files from `/src/scss/` to your project
+### 1 - Copy grid.min.css or include source files from `/src/scss/` to your project
 
 
-### 3 Have fun with simple grid
+### 2 - Have fun with simple grid
 
 ```html
 <div class="container">
