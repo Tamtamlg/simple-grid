@@ -30,20 +30,32 @@ $lg: 992px !default;
 $xl: 1200px !default;
 ```
 
+## How to use
 
-## Result
-
-```bash
-./dist/css/grid.css
+### 1 Add link to <head>
+```html
+<link rel="stylesheet" href="./dist/css/grid.min.css">
 ```
 
+### 2 Or include files from `/src/scss/` to your project
+
+
+### 3 Have fun with simple grid
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4">.col-xl-4</div>
+    <div class="col-xl-8">.col-xl-8</div>
+  </div>
+</div>
+```
 
 ## Build
 
 ```bash
 npm run build
 ```
-
 
 ## Development
 
