@@ -32,7 +32,7 @@ $xl: 1200px !default;
 
 ## How to use
 
-### 1 Add link to <head>
+### 1 Add link to head
 ```html
 <link rel="stylesheet" href="./dist/css/grid.min.css">
 ```
